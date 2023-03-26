@@ -22,6 +22,17 @@ function newDinnerdate( req, res) {
     res.render('dinners/new', { title: 'Add Dinner Date', errorMsg: ''});
 }
 
+async function create(req, res) {
+    try {
+        const dinner = new Dinner(req.body);
+        await dinner.save();
+        console.log(dinner);
+        res.redirect('/dinners') //temp code, after show.ejs is coded out
+        //redirect to '/dinners/${dinner._id}
+    } catch (err) {
+        res.redirect('/dinners/new');
+    }
+}
 
 
 
@@ -35,5 +46,6 @@ function newDinnerdate( req, res) {
 
 module.exports = {
     index,
-    new: newDinnerdate
+    new: newDinnerdate,
+    create
 }
