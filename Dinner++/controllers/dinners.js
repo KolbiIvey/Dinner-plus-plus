@@ -8,8 +8,8 @@ async function index(req, res) {
     try {
         const dinners = await Dinner.find({});
         res.render('dinners/index', { data:{
-            'title': 'Dinner Dates',
-            'dinnerData': dinners
+            title: 'Dinner Dates',
+            dinnerData: dinners
     }})
     } catch (err) {
         console.log(err);
