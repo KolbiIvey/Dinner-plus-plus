@@ -1,0 +1,24 @@
+<%- include('../partials/header') %>
+
+<div class="movie-card"> 
+    <% dinnerData.forEach(function(d){ %>
+        <div>
+            <h2><%= dinnerData.eventName %></h2>
+        </div>
+        <div>
+            <h4><%= dinnerData.eventDate %></h4>
+        </div>
+        <div>
+            <h4><%= dinnerData.eventLocation %>
+        </div>
+        <div>
+            <h4><%= dinnerData.eventHost %>
+        </div>
+        <a href="/movies/<%= d._id %>">See details</a>
+    <% }) %>
+
+</div>
+
+
+
+<%- include('../partials/footer') %>
