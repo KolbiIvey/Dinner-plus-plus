@@ -2,19 +2,27 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
+// Need to fix eventTimeStart and End type to allow MongoDB to accept time
 const dinnerSchema = new Schema({
     eventName: {
         type: String,
         required: true
     },
+
     eventDate: {
         type: Date,
         required: true
     },
-    eventLocation: {
-        type: String,
-        required: true
-    },
+    // eventTimeStart: {
+    //     type: Date,
+    //     required: true
+    // },
+
+    // eventTimeEnd: {
+    //     type: Date,
+    //     required: true
+    // },
+
     eventHost: {
         type: String,
         required: true

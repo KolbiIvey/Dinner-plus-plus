@@ -1,5 +1,35 @@
 <%- include('../partials/header') %>
 
+<div class="dinner-details"> 
+        <div>
+            <div>Event Name:</div>
+            <h2><%= dinner.eventName %></h2>
+        </div>
+        <div>
+            <div>Event Date:</div>
+            <h4><%= dinner.eventDate %></h4>
+        </div>
+        <div>
+            <div>Event Location:</div>
+            <h4><%= dinner.eventLocation %></h4>
+        </div>
+        <div>
+            <div>Event Host:</div>
+            <h4><%= dinner.eventHost %></h4>
+        </div>
+        <!-- squid with single line to call upon the data -->
+        <div title="Add to Calendar" class="addeventatc">
+            Add to Calendar
+            <span class="start">04/10/2023 08:00 AM</span>
+            <span class="end">04/10/2023 08:00 AM</span>
+            <span class="timezone">America/Los_Angeles</span>
+            <span class="title"><%= dinner.eventName %></span>
+            <span class="description">Describe Party Here</span>
+            <span class="location"><%= dinner.eventLocation %></span>
+        </div>
+
+</div>
+
 
 
 

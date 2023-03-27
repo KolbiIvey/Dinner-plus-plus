@@ -28,23 +28,24 @@ async function create(req, res) {
         await dinner.save();
         console.log(dinner);
 
-        // openai
-        const evtName = req.body.eventName
-        const evtHost = req.body.eventHost
-        const prompt = `Write an invitation for ${evtName} hosted by ${evtHost} in less than 200 characters.`
-        console.log(prompt)
-        const params = {
-            model: "text-davinci-003",
-            prompt: prompt,
-            temperature: 0.5,
-            n: 1,
-        };
+        // // openai
+    
+        // const evtName = req.body.eventName
+        // const evtHost = req.body.eventHost
+        // const prompt = `Write an invitation for ${evtName} hosted by ${evtHost} in less than 200 characters.`
+        // console.log(prompt)
+        // const params = {
+        //     model: "text-davinci-003",
+        //     prompt: prompt,
+        //     temperature: 0.5,
+        //     n: 1,
+        // };
 
-        console.log(params)
-        const response = await openai.createCompletion(params);
-        console.log(response)
-        console.log(response.data.choices[0].text)
-        //return response.choices[0].text.trim();
+        // console.log(params)
+        // const response = await openai.createCompletion(params);
+        // console.log(response)
+        // console.log(response.data.choices[0].text)
+        // //return response.choices[0].text.trim();
 
         res.redirect('/dinners') //temp code, after show.ejs is coded out
         //redirect to '/dinners/${dinner._id}
@@ -57,11 +58,16 @@ async function create(req, res) {
     }
 }
 
-
+async function show(req, res) {
+    const dinner = await Dinner.findById(req.params.id)
+    res.render('dinners/show', { 
+        title: dinner.eventName,
+        dinner: dinner })
+}
 
 module.exports = {
     index,
     new: newDinnerdate,
     create,
-
+    show,
 }
