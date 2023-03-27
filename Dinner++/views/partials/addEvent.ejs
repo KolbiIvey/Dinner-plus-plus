@@ -1,0 +1,29 @@
+  
+  <!-- AddEvent script -->
+  <script type="text/javascript" src="https://cdn.addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>
+
+  <!-- AddEvent Settings -->
+  <script type="text/javascript">
+  window.addeventasync = function(){
+      addeventatc.settings({
+          appleical  : {show:false, text:"Apple Calendar"},
+          google     : {show:true, text:"Google <em>(online)</em>"},
+          office365  : {show:false, text:"Office 365 <em>(online)</em>"},
+          outlook    : {show:false, text:"Outlook"},
+          outlookcom : {show:false, text:"Outlook.com <em>(online)</em>"},
+          yahoo      : {show:false, text:"Yahoo <em>(online)</em>"}
+      });
+  };
+  </script>
+
+<!-- Move to a for each details view page -->
+<!-- squid with single line to call upon the data -->
+<div title="Add to Calendar" class="addeventatc">
+    Add to Calendar
+    <span class="start">04/10/2023 08:00 AM</span>
+    <span class="end">04/10/2023 10:00 AM</span>
+    <span class="timezone">America/Los_Angeles</span>
+    <span class="title">Kelli's Taco Party</span>
+    <span class="description">Description of the event</span>
+    <span class="location">Location of the event</span>
+</div>
