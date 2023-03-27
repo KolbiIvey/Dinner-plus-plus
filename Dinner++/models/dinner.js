@@ -3,6 +3,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const dinnerSchema = new Schema({
+    eventName: {
+        type: String,
+        required: true
+    },
     eventDate: {
         type: Date,
         required: true
@@ -18,6 +22,9 @@ const dinnerSchema = new Schema({
     attendeeList: {
         type: Array,
         // add ref here for Oauth [ref]
+    },
+    eventAttendeeNum: {
+        type: Number
     },
     foodList: {
         type: Array,
