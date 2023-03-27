@@ -11,7 +11,9 @@ router.get('/', dinnersCtrl.index);
 router.get('/new', dinnersCtrl.new);
 //POST /dinners
 router.post('/', dinnersCtrl.create);
-
+// Path to individual dinner details
+//GET /dinners/:id
+router.get('/:id', dinnersCtrl.show);
 
 
 
