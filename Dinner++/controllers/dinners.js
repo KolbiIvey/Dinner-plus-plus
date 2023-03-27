@@ -17,7 +17,7 @@ async function index(req, res) {
     }
 }
 
-function newDinnerdate( req, res) {
+function newDinnerdate(req, res) {
     //render an error message if create function fails
     res.render('dinners/new', { title: 'Add Dinner Date', errorMsg: ''});
 }
