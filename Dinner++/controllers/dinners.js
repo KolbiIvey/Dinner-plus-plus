@@ -42,7 +42,7 @@ async function create(req, res) {
 
         console.log(params)
         const response = await openai.createCompletion(params);
-        
+        console.log(response)
         console.log(response.data.choices[0].text)
         //return response.choices[0].text.trim();
 
