@@ -59,10 +59,11 @@ async function create(req, res) {
 }
 
 async function show(req, res) {
-    const dinner = await Dinner.findById(req.params.id)
+    const dinner = await Dinner.findById(req.params.id).populate('foodList');
     res.render('dinners/show', { 
         title: dinner.eventName,
         dinner: dinner })
+        console.log(dinner)
 }
 
 module.exports = {

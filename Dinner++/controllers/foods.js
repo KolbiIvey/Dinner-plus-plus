@@ -19,10 +19,12 @@ async function createFood(req, res){
         // need to incorporate an async ?
         console.log(meal._id) // this is a 'new ObjectId('93847ja89234 hash')
         const newMeal = await Food.findById(meal._id)
-        console.log(newMeal) // this is the object itself. 
+        console.log(newMeal) // this is the object itself.
+        console.log(dinner.foodList)
         dinner.foodList.push(newMeal._id)
-        
+        console.log(dinner.foodList)
         res.redirect(`${dinner._id}`)
+        await dinner.save();
     } catch(err){
         console.log(err);
         res.status(500).send(err.message);

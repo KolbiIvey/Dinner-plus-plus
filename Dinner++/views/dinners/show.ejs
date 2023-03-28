@@ -17,8 +17,17 @@
             <div>Event Host:</div>
             <h4><%= dinner.eventHost %></h4>
         </div>
-
-
+        <div>
+            <div>Food List:</div>
+            <% if (dinner.foodList) {%>
+                <% dinner.foodList.forEach(function (item) { %>
+                    <p><%= item.foodName %></p>
+                    <p><%= item.foodAllergen %></p>
+                <% }); %>
+            <% } else { %>
+                <p>No food listed.</p>
+            <% }; %>
+        </div>
         <div><a href="/dinners/<%= dinner._id %>/foods/new">Bring a dish!</a> 
 
 
@@ -37,6 +46,9 @@
 
 
 </div>
+
+            <!---Added food shown below-->  
+
 
 
 
