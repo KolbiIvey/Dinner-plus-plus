@@ -3,11 +3,11 @@
 <!-- <div>Before adding, please ensure that the Performer is not in the following list:</div> -->
 
 
-<form id="add-foods-form" action="/foods" method="POST">
+<form id="add-foods-form" action="/dinners/<%= dinner._id %>" method="POST">
   <label>Food</label>
   <input type="text" name="foodName">
   <label>Allergens<label>
-  <select>
+  <select name="foodAllergen">
     <option>--</option>
     <option value="DF">Dairy Free</option>
     <option value="VG">Vegetarian</option>
