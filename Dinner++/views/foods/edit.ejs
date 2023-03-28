@@ -1,0 +1,20 @@
+<%- include('../partials/header') %>
+
+<!-- <div>Before adding, please ensure that the Performer is not in the following list:</div> -->
+
+
+<form id="edit-foods-form" action="/dinners/<%= dinner._id %>" method="PUT">
+  <label>Food</label>
+  <input type="text" name="foodName">
+  <label>Allergens<label>
+  <select name="foodAllergen">
+    <option>--</option>
+    <option value="DF">Dairy Free</option>
+    <option value="VG">Vegetarian</option>
+    <option value="VE">Vegan</option>
+    <option value="NF">Nut Free</option>
+  </select>
+  <input type="submit" value="Edit Food">
+</form>
+
+<%- include('../partials/footer') %>
