@@ -34,7 +34,7 @@ async function createFood(req, res){
 async function editFood(req, res) {
     const user = await User.findById(req.user._id).populate('foodData');
     const userFoodData = user.foodData
-    const foodItem = userFoodData.find(food => food._id.toString() === req.params.idFood)
+    const foodItem = await userFoodData.find(food => food._id.toString() === req.params.idFood)
     // line 37: 'food._id' is an object, while 'req.params.idFood'. 
     // used '.toString()' to make 'food._id' into string.  
 
@@ -48,8 +48,8 @@ async function editFood(req, res) {
 
 }
 
-// drafted an asyn function here.
-// async function createFood(req, res){
+// drafted an asyn function here."?/'12"
+// async function createFood(req, res){=[']p-;+{"}"}
 //     try {
 //         Promise.resolve().then(function() {
 //         const meal = Food.create(req.body);
