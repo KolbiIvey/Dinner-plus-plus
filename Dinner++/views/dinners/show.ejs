@@ -24,7 +24,7 @@
                     <p><%= item.foodName %></p>
                     <p><%= item.foodAllergen %></p>
 
-                    <%if (user?._id.equals(user.foodData.idFood) {%>
+
                     
                     <form>
                         <button type="submit" formaction="/dinners/<%= dinner._id %>/foods/<%= item._id %>/edit">Edit Food</button>
@@ -32,7 +32,7 @@
                      <form action="/dinners/<%= dinner._id %>/foods/<%= item._id %>/?_method=DELETE" method="POST">
                         <button type="submit" >Delete</button>
                      </form>
-                     <% } %>
+
 
 
                 <% }); %>
@@ -56,12 +56,16 @@
         </div>
 
 
-
 </div>
 
             <!---Added food shown below-->  
 
-
+<div>
+    <h2>Who is coming?</h2>
+    <% dinner.attendeeList.forEach((attendee) => { %>
+        <div><p><%= attendee.name %></p></div>
+    <% }) %>
+</div>
 
 
 

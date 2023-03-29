@@ -27,10 +27,10 @@ const dinnerSchema = new Schema({
         type: String,
         required: true
     },
-    attendeeList: {
-        type: Array,
-        // add ref here for Oauth [ref]
-    },
+    attendeeList: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+      }],
     eventAttendeeNum: {
         type: Number
     },
@@ -42,10 +42,7 @@ const dinnerSchema = new Schema({
 });
 
 
-// [{
-//     type: Schema.Types.ObjectId,
-//     ref: 'Food'
-//   }],
+
 
 
 module.exports = mongoose.model('Dinner', dinnerSchema)

@@ -21,6 +21,14 @@ async function createFood(req, res){
         const user = await User.findById(req.user._id)
         const newMeal = await Food.findById(meal._id)
         dinner.foodList.push(newMeal._id)
+
+        // new code
+        if (dinner.attendeeList.findIndex((attendee) => attendee.toString() === req.user.id) < 0){
+            dinner.attendeeList.push(user._id)
+            await user.save()
+        }
+        // end new code
+        console.log(dinner.attendeeList)
         user.foodData.push(newMeal._id)
         res.redirect(`${dinner._id}`)
         await dinner.save();
