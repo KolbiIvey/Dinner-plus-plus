@@ -12,7 +12,7 @@ router.get('/dinners/:id/foods/new', ensureLoggedIn, foodsCtrl.new);
 router.post('/dinners/:id', ensureLoggedIn, foodsCtrl.createFood)
 
 //GET edit foods link /dinner/:id/foods/:idFood
-router.get('/dinners/:id/foods/:idFood', ensureLoggedIn, foodsCtrl.editFood)
+router.get('/dinners/:id/foods/:idFood/edit', ensureLoggedIn, foodsCtrl.editFood)
 
 //PUT /update /foods/:id
 

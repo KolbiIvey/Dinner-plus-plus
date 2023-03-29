@@ -24,7 +24,7 @@
                     <p><%= item.foodName %></p>
                     <p><%= item.foodAllergen %></p>
                     <button action='/dinners/<%= dinner._id %>/foods/<%= item._id %>'>Edit Food</button>
-                    <a href='/dinners/<%= dinner._id %>/foods/edit'>Sample Link</a>
+                    <a href='/dinners/<%= dinner._id %>/foods/<%= item._id %>/edit'>Sample Link</a>
                 <% }); %>
             <% } else { %>
                 <p>No food listed.</p>

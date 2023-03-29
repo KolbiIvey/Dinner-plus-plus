@@ -32,14 +32,16 @@ async function createFood(req, res){
 }
 
 async function editFood(req, res) {
-    const user = await User.findById(req.user._id)
-    const userFoodData = await User.foodData.findById(req.params.idFood)
-    console.log(userFoodData)
-    const dinner = await Dinner.findById(req.params.id)
-    const food = await Food.findById(req.params.id)
+    const user = await User.findById(req.user._id).populate('foodData');
+    console.log(user.foodData)
+    const userFoodData = user.foodData
+    const foodItem = userFoodData.find(food => food._id === req.params.idFood)
+    console.log(foodItem)
+     const dinner = await Dinner.findById(req.params.id)
+    // const food = await Food.findById(req.params.id)
     res.render('foods/edit', {
         title: 'Edit Food',
-        food: food,
+        food: foodItem
     })
     // res.redirect(`dinners/${dinner._id}/foods/${food._id}`, { title: 'Edit Food', errorMsg: ''});
 
