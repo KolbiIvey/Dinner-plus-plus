@@ -42,5 +42,10 @@ const dinnerSchema = new Schema({
 });
 
 
+// [{
+//     type: Schema.Types.ObjectId,
+//     ref: 'Food'
+//   }],
+
 
 module.exports = mongoose.model('Dinner', dinnerSchema)
