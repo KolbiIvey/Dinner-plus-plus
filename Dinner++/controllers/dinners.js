@@ -63,7 +63,6 @@ async function show(req, res) {
     res.render('dinners/show', { 
         title: dinner.eventName,
         dinner: dinner })
-        console.log(dinner)
 }
 
 module.exports = {
