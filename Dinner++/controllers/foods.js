@@ -1,5 +1,7 @@
-const Food = require('../models/food')
+const Food = require('../models/food');
 const Dinner = require('../models/dinner');
+const User = require('../models/user');
+// const user = require('../models/user');
 
 
 
@@ -14,21 +16,33 @@ async function newFood(req, res) {
 async function createFood(req, res){
     try {
         const meal = await Food.create(req.body);
+        //findbyid error use diff method?
         const dinner = await Dinner.findById(req.params.id)
-        // unable to still push the new meal to the dinner.foodList array
-        // need to incorporate an async ?
-        console.log(meal._id) // this is a 'new ObjectId('93847ja89234 hash')
+        const user = await User.findById(req.user._id)
         const newMeal = await Food.findById(meal._id)
-        console.log(newMeal) // this is the object itself.
-        console.log(dinner.foodList)
         dinner.foodList.push(newMeal._id)
-        console.log(dinner.foodList)
+        user.foodData.push(newMeal._id)
         res.redirect(`${dinner._id}`)
         await dinner.save();
+        await user.save();
     } catch(err){
         console.log(err);
         res.status(500).send(err.message);
     }
+}
+
+async function editFood(req, res) {
+    const user = await User.findById(req.user._id)
+    const userFoodData = await User.foodData.findById(req.params.idFood)
+    console.log(userFoodData)
+    const dinner = await Dinner.findById(req.params.id)
+    const food = await Food.findById(req.params.id)
+    res.render('foods/edit', {
+        title: 'Edit Food',
+        food: food,
+    })
+    // res.redirect(`dinners/${dinner._id}/foods/${food._id}`, { title: 'Edit Food', errorMsg: ''});
+
 }
 
 // drafted an asyn function here.
@@ -55,5 +69,6 @@ async function createFood(req, res){
 
 module.exports = {
     new: newFood,
-    createFood
+    createFood,
+    editFood,
 }

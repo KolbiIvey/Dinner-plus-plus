@@ -10,6 +10,10 @@ const userSchema = new Schema({
       type: String,
       required: true
     },
+    foodData: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Food'
+    }],
     email: String,
     avatar: String
   }, {
