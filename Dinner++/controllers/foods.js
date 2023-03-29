@@ -50,8 +50,7 @@ async function editFood(req, res) {
 async function updateFood(req, res) {
     try {
     const food = await Food.findById(req.params.idFood)
-    // food.update(req.params.body)
-    Object.assign(food, req.params.body)
+    Object.assign(food, req.body)
     res.redirect(`/dinners/${req.params.id}`)
     await food.save();
     } catch(err){
@@ -59,6 +58,49 @@ async function updateFood(req, res) {
         res.status(500).send(err.message);
     }
 }
+
+async function deleteFood(req, res){
+    try{
+        const user = await User.findOne(req.user.id)
+        const dinner = await Dinner.findOne(req.params.id)
+        const food = await Food.findOne(req.params.idFood)
+        console.log("See the code below!")
+        console.log(user.foodData)
+        console.log(dinner.foodList)
+
+        const idxUser = user.foodData.findIndex((food) => food._id === req.params.idFood)
+        user.foodData.splice(idxUser, 1)
+
+        const idxDinner = dinner.foodList.findIndex((food) => food._id === req.params.idFood)
+        dinner.foodList.splice(idxDinner, 1)
+
+        await user.save()
+        await dinner.save()
+
+        console.log(user.foodData)
+        console.log(dinner.foodList)
+
+        console.log()
+        // const idx = todos.findIndex(todo => todo.id === id);
+        // todos.splice(idx, 1);
+        await Food.findOneAndDelete(req.params.idFood)
+
+        //await food.save()
+        res.redirect(`/dinners/${req.params.id}`)
+
+
+    }catch(err){
+        console.log(err);
+        res.status(500).send(err.message);
+        console.log("This will run if it doesn't work!")
+    }
+
+}
+
+// const Food = require('../models/food');
+// const Dinner = require('../models/dinner');
+// const User = require('../models/user');
+
 
 // function update(id, updatedFood) {
 //     id = parseInt(id);
@@ -99,4 +141,5 @@ module.exports = {
     createFood,
     editFood,
     updateFood,
+    deleteFood
 }
