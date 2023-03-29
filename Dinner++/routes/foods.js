@@ -11,9 +11,10 @@ router.get('/dinners/:id/foods/new', ensureLoggedIn, foodsCtrl.new);
 // POST / create
 router.post('/dinners/:id', ensureLoggedIn, foodsCtrl.createFood)
 
-//GET edit foods link /dinner/:id/foods/:idFood
+//GET edit foods link /dinner/:id/foods/:idFood/edit
 router.get('/dinners/:id/foods/:idFood/edit', ensureLoggedIn, foodsCtrl.editFood)
 
 //PUT /update /foods/:id
+router.put('/dinners/:id/foods/:idFood', foodsCtrl.updateFood)
 
 module.exports = router;

@@ -32,21 +32,45 @@ async function createFood(req, res){
 }
 
 async function editFood(req, res) {
-    const user = await User.findById(req.user._id).populate('foodData');
+    try { const user = await User.findById(req.user._id).populate('foodData');
     const userFoodData = user.foodData
     const foodItem = await userFoodData.find(food => food._id.toString() === req.params.idFood)
-    // line 37: 'food._id' is an object, while 'req.params.idFood'. 
-    // used '.toString()' to make 'food._id' into string.  
-
-    // const dinner = await Dinner.findById(req.params.id)
-    // const food = await Food.findById(req.params.id)
+    const dinner = await Dinner.findById(req.params.id)
     res.render('foods/edit', {
         title: 'Edit Food',
-        food: foodItem
+        food: foodItem,
+        dinner: dinner,
     })
-    // res.redirect(`dinners/${dinner._id}/foods/${food._id}`, { title: 'Edit Food', errorMsg: ''});
-
+    } catch(err){
+        console.log(err);
+        res.status(500).send(err.message);
+    }
 }
+
+async function updateFood(req, res) {
+    try {
+    const food = await Food.findById(req.params.idFood)
+    // food.update(req.params.body)
+    Object.assign(food, req.params.body)
+    res.redirect(`/dinners/${req.params.id}`)
+    await food.save();
+    } catch(err){
+        console.log(err);
+        res.status(500).send(err.message);
+    }
+}
+
+// function update(id, updatedFood) {
+//     id = parseInt(id);
+//     const todo = todos.find(todo => todo.id === id);
+//     // todo.todo = updatedTodo.todo;
+//     Object.assign(todo, updatedTodo)
+//   }
+
+
+
+// res.redirect(`dinners/${dinner._id}`);
+// `, { title: 'Edit Food', errorMsg: ''}
 
 // drafted an asyn function here."?/'12"
 // async function createFood(req, res){=[']p-;+{"}"}
@@ -74,4 +98,5 @@ module.exports = {
     new: newFood,
     createFood,
     editFood,
+    updateFood,
 }
