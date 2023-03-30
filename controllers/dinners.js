@@ -76,7 +76,8 @@ async function show(req, res) {
     },{
         path: 'attendeeList',
     }]
-    const dinner = await Dinner.findById(req.params.id).populate(query);
+    // const dinner = await Dinner.findById(req.params.id).populate(query);
+    const dinner = await Dinner.findById(req.params.id).populate('foodList').populate('attendeeList');
     const startDate = dateConverter(dinner.eventStartDate);
     const endDate = dateConverter(dinner.eventEndDate);
     dinner['startDateStrFormat'] = startDate;
