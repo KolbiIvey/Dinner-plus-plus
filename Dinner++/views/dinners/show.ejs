@@ -6,8 +6,13 @@
             <h2><%= dinner.eventName %></h2>
         </div>
         <div>
-            <div>Event Date:</div>
-            <h4><%= dinner.eventDate %></h4>
+            <div>Event Start Date:</div>
+            <h4><%= dinner.eventStartDate%></h4>
+
+        </div>
+        <div>
+            <div>Event End Date:</div>
+            <h4><%= dinner.eventEndDate %></h4>
         </div>
         <div>
             <div>Event Location:</div>
@@ -47,9 +52,9 @@
         <!-- squid with single line to call upon the data -->
         <div title="Add to Calendar" class="addeventatc">
             Add to Calendar
-            <span class="start">04/10/2023 08:00 AM</span>
-            <span class="end">04/10/2023 08:00 AM</span>
-            <span class="timezone">America/Los_Angeles</span>
+            <span class="start"><%= start %></span>
+            <span class="end"><%= end %></span>
+            <!-- <span class="timezone">America/Los_Angeles</span> -->
             <span class="title"><%= dinner.eventName %></span>
             <span class="description">Describe Party Here</span>
             <span class="location"><%= dinner.eventLocation %></span>
