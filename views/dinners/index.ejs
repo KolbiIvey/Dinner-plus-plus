@@ -1,29 +1,21 @@
 <%- include('../partials/header') %>
 
-<div class="dinner-card"> 
     <% data.dinnerData.forEach(function(d){ %>
-        <div>
+    <div class="card mt-4">
+        <div class="card-header py-0">
             <h2><%= d.eventName %></h2>
+            <p>Hosted by: <%= d.eventHost %></p>
         </div>
-        <div>
-            <h4><%= d.eventDate %></h4>
+        <div class="card-body text-body">
+            <p><%= d.eventDate %></p>
+            <p><%= d.eventTimeStart %></p>
+            <p><%= d.eventTimeEnd %></p>
+            <p><%= d.eventLocation %></p>
+            <a href="/dinners/<%= d._id %>" class="link-dark">See details</a>
         </div>
-        <div>
-            <h4><%= d.eventTimeStart %></h4>
-        </div>
-        <div>
-            <h4><%= d.eventTimeEnd %></h4>
-        </div>
-        <div>
-            <h4><%= d.eventLocation %>
-        </div>
-        <div>
-            <h4><%= d.eventHost %>
-        </div>
-        <a href="/dinners/<%= d._id %>">See details</a>
-    <% }) %>
-
+    </div>
 </div>
+    <% }) %>
 
 
 
