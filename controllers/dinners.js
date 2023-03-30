@@ -3,13 +3,43 @@ const Dinner = require('../models/dinner');
 
 const openai = require('../config/gpt');
 
+function dateConverter(dateObj) {
+    if (!dateObj){
+        return
+    }
+    const startDate = dateObj
+    let day = startDate.getDate();
+    let month = startDate.getMonth() + 1;
+    let year = startDate.getFullYear()
+    let hour = startDate.getHours();
+    let minute = startDate.getMinutes();
+    let newArray = [day, month, hour, minute]
+    newArray.forEach((digits, index)=> {
+        let digitString = digits.toString();
+        if (digitString.length === 1) {
+            let newNum =  `0${digitString}`
+            newArray.splice(index, 1, newNum)
+        }
+    })
+    let format1 = `${newArray[1]}/${newArray[0]}/${year} ${newArray[2]}:${newArray[3]}`
+    return format1;
+}
+
+
 
 async function index(req, res) {   
     try {
         const dinners = await Dinner.find({});
+        await dinners.forEach(dinner => { 
+            const startDate = dateConverter(dinner.eventStartDate);
+            const endDate = dateConverter(dinner.eventEndDate);
+            console.log(startDate)
+            Object.assign(dinner, {'start':startDate,'end' :endDate})
+            console.log(dinner)
+        })
         res.render('dinners/index', { data:{
             title: 'Dinner Dates',
-            dinnerData: dinners
+            dinnerData: dinners,
     }})
     } catch (err) {
         console.log(err);
@@ -71,42 +101,31 @@ async function create(req, res) {
 }
 
 async function show(req, res) {
-    const query = [{
-        path: 'foodList'
-    },{
-        path: 'attendeeList',
-    }]
-    // const dinner = await Dinner.findById(req.params.id).populate(query);
-    const dinner = await Dinner.findById(req.params.id).populate('foodList').populate('attendeeList');
-    const startDate = dateConverter(dinner.eventStartDate);
-    const endDate = dateConverter(dinner.eventEndDate);
-    dinner['startDateStrFormat'] = startDate;
-    dinner['endDateStrFormat'] = endDate;
-    res.render('dinners/show', { 
-        title: dinner.eventName,
-        dinner: dinner,
-        start: startDate,
-        end: endDate})
+    try{
+        const query = [{
+            path: 'foodList'
+        },{
+            path: 'attendeeList',
+        }]
+        // const dinner = await Dinner.findById(req.params.id).populate(query);
+
+        const dinner = await Dinner.findById(req.params.id).populate('foodList').populate('attendeeList');
+        const startDate = dateConverter(dinner.eventStartDate);
+        const endDate = dateConverter(dinner.eventEndDate);
+        res.render('dinners/show', { 
+            title: dinner.eventName,
+            dinner: dinner,
+            start: startDate,
+            end: endDate})
+    } catch(err){
+        if (err.response){
+            console.log(err.response.status);
+            console.log(err.response.data);
+        }
+        res.redirect('/dinners/new');
+    }
 }
 
-function dateConverter(dateObj) {
-    const startDate = dateObj
-    let day = startDate.getDate();
-    let month = startDate.getMonth() + 1;
-    let year = startDate.getFullYear()
-    let hour = startDate.getHours();
-    let minute = startDate.getMinutes();
-    let newArray = [day, month, hour, minute]
-    newArray.forEach((digits, index)=> {
-       let digitString = digits.toString();
-    if (digitString.length === 1) {
-       let newNum =  `0${digitString}`
-       newArray.splice(index, 1, newNum)
-    }
-    })
-    let format1 = ` ${newArray[1]}/${newArray[0]}/${year} ${newArray[2]}:${newArray[3]}`
-    return format1;
-}
 
 
 
