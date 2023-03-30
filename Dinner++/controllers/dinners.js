@@ -71,30 +71,21 @@ async function create(req, res) {
 }
 
 async function show(req, res) {
-    // new code
     const query = [{
         path: 'foodList'
     },{
         path: 'attendeeList',
     }]
-
-    //
     const dinner = await Dinner.findById(req.params.id).populate(query);
-    // const regx = //gi
-
-    //  let stringDate =  dinner.eventStartDate.toString()
-    //  let found = stringDate.match(regx)
-    // console.log(found)
     const startDate = dateConverter(dinner.eventStartDate);
     const endDate = dateConverter(dinner.eventEndDate);
     dinner['startDateStrFormat'] = startDate;
     dinner['endDateStrFormat'] = endDate;
-    console.log(startDate)
-    console.log(endDate)
-    console.log(dinner);
     res.render('dinners/show', { 
         title: dinner.eventName,
-        dinner: dinner})
+        dinner: dinner,
+        start: startDate,
+        end: endDate})
 }
 
 function dateConverter(dateObj) {
@@ -104,15 +95,15 @@ function dateConverter(dateObj) {
     let year = startDate.getFullYear()
     let hour = startDate.getHours();
     let minute = startDate.getMinutes();
-    console.log(`
-    day: ${day}
-    month: ${month + 1}
-    year: ${year}
-    hour: ${hour}
-    minute: ${minute}
-    ${month}/${day}/${year} ${hour}:${minute}
-    `)
-    let format1 = ` ${month}/${day}/${year} ${hour}:${minute}`
+    let newArray = [day, month, hour, minute]
+    newArray.forEach((digits, index)=> {
+       let digitString = digits.toString();
+    if (digitString.length === 1) {
+       let newNum =  `0${digitString}`
+       newArray.splice(index, 1, newNum)
+    }
+    })
+    let format1 = ` ${newArray[1]}/${newArray[0]}/${year} ${newArray[2]}:${newArray[3]}`
     return format1;
 }
 
