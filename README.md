@@ -5,10 +5,11 @@
 
 
 #                                   Description
-
-    Planning a date night for you and your loved one? How about a birthday party for your good friend Kenjamin? Or maybe you just want to schedule a Taco Tuesday for your office party after work?
-    Welcome to Dinner++, a fun and simple way to schedule all of your dinner-date related events!
-    Creating an event, whether it be a dinner date, a birthday, or get together, is as easy as playing a simple slot machine for a certain loan shark. When you create an event, you can specify the name of the event, the date and time, and the location!After adding the event, you can specify what foods you are bringing. When your friends take a look at your event they can add food to bring, and also add the event to their calendar! We hope you enjoy your experience in using our app and can make many memories through your dinner dates and the people you share them with!
+Planning a date night for you and your loved one? How about a birthday party for your good friend Kenjamin? Or maybe you just want to schedule a Taco Tuesday for your office party after work?
+Welcome to Dinner++, a fun and simple way to schedule all of your dinner-date related events!
+Creating an event, whether it be a dinner date, a birthday, or get together, is as easy as playing a simple slot machine for a certain loan shark. When you create an event, you can specify the name of the event, the date and time, and the location!After adding the event, you can specify what foods you are bringing. When your friends take a look at your event they can add food to bring, and also
+add the event to their calendar! We hope you enjoy your experience in using our app and can make
+many memories through your dinner dates and the people you share them with!
     
 
 #                                       Screenshots 
@@ -43,19 +44,20 @@
 
 
 #                                       Getting Started
-        To get started using Dinner++, please use this link here "" and start planning Uncle Kenjamins birthday now!
+To get started using Dinner++, please use this link here "" and start planning Uncle Kenjamins birthday now!
 
 
 #                                           Next Steps
-            For our next steps we plan on implementing the following user stories:
-            - AAU: I can delete events that I added
-            - AAU: I want to add a new [food] item on or from the [dinner] page, and then I want to see what food is being brought, and who is bringing it.
-            - AAU: I can sort [dishes] by diet or allergies
-            - AAU I can leave a review about the dinner date
-            - AAU I can add how many people my food will feed
-            - AAU I can add my own recipe to the dish I am creating
-            - AAU I can have my own personal dashboard to be able to view
-              all of my dinner parties
+For our next steps we plan on implementing the following user stories:
+- AAU: I can delete events that I added
+- AAU: I want to add a new [food] item on or from the [dinner] page, 
+and then I want to see what food is being brought, and who is bringing it.
+- AAU: I can sort [dishes] by diet or allergies
+- AAU I can leave a review about the dinner date
+- AAU I can add how many people my food will feed
+- AAU I can add my own recipe to the dish I am creating
+- AAU I can have my own personal dashboard to be able to view
+all of my dinner parties
     
     
     
