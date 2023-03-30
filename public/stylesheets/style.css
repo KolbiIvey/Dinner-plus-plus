@@ -1,7 +1,8 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background: #D3D3D3;
+  background: whitesmoke;
+  font-family: 'Vollkorn', serif;
 }
 
 body > nav {
@@ -11,6 +12,10 @@ body > nav {
   justify-content: flex-end;
   align-items: center;
   padding: 0 20px 0 30px;
+}
+
+h8 {
+  font-weight: bold;
 }
 
 #nav-text {
@@ -49,15 +54,15 @@ body > nav {
 }
 
 #card-header{
-  background-color: #90278E !important;
+  background-color: #465362 !important;
+  color: whitesmoke;;
 }
-
 #card-body{
-  background-color: #DC068B !important;
+  background-color: #F7F7F7!important;
 }
 
 a {
-  color: #00B7FF;
+  color: #FFFFFF;
 }
 
 /* google oAuth */

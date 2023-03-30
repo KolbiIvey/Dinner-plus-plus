@@ -1,63 +1,17 @@
 <%- include('../partials/header') %>
 
 
-<div class="dinner-details"> 
-        <div>
-            <div>Event Name:</div>
-            <h2><%= dinner.eventName %></h2>
+<div class="dinner-details container mt-4"> 
+        <div class="row">
+         <div class="col-12 d-flex justify-content-center">
+            <h1><%= dinner.eventName %></h1>
+        </div>
         </div>
 
-        <div id="openai">
-            <p>open ai integration below:</p>
-        
-        </div>
-        
-        <div>
-            <div>Event Start Date:</div>
-            <h4><%= dinner.eventStartDate%></h4>
-
-        </div>
-        <div>
-            <div>Event End Date:</div>
-            <h4><%= dinner.eventEndDate %></h4>
-        </div>
-        <div>
-            <div>Event Location:</div>
-            <h4><%= dinner.eventLocation %></h4>
-        </div>
-        <div>
-            <div>Event Host:</div>
-            <h4><%= dinner.eventHost %></h4>
-        </div>
-        <div>
-            <div>Food List:</div>
-            <% if (dinner.foodList) {%>
-                <% dinner.foodList.forEach(function (item) { %>
-                    <p><%= item.foodName %></p>
-                    <p><%= item.foodAllergen %></p>
-
-                   
-                    
-                    <form>
-                        <button type="submit" formaction="/dinners/<%= dinner._id %>/foods/<%= item._id %>/edit">Edit Food</button>
-                     </form>
-                     <form action="/dinners/<%= dinner._id %>/foods/<%= item._id %>/?_method=DELETE" method="POST">
-                        <button type="submit" >Delete</button>
-                     </form>
-                    
-
-
-                <% }); %>
-            <% } else { %>
-                <p>No food listed.</p>
-            <% }; %>
-        </div>
-        <div><a href="/dinners/<%= dinner._id %>/foods/new">Bring a dish!</a> 
-
-
-            </div>
+        <div class="row">
+            <div class="col-5"></div>
         <!-- squid with single line to call upon the data -->
-        <div title="Add to Calendar" class="addeventatc">
+        <div title="Add to Calendar" class="addeventatc col-2 mt-2">
             Add to Calendar
             <span class="start"><%= start %></span>
             <span class="end"><%= end %></span>
@@ -65,10 +19,53 @@
             <span class="title"><%= dinner.eventName %></span>
             <span class="description">Describe Party Here</span>
             <span class="location"><%= dinner.eventLocation %></span>
+            </div>
+        </div>
+        <div class="col-5">
         </div>
 
+        <div class="row mt-4">
+        <div class="col-12 d-flex justify-content-center" id="openai">
+            <p>open ai integration below:</p>
+        </div>
+        </div>
 
-</div>
+        <div class="row">
+        <div class="col-8">
+            <div class="pt-2 pb-2">Event Start Date:
+                <h8><%= dinner.eventStartDate%></h8>
+            </div>
+            <div class="py-2">Event End Date:
+                <h8><%= dinner.eventEndDate %></h8>
+            </div>
+            <div class="py-2">Event Location:
+                <h8><%= dinner.eventLocation %></h8>
+            </div>
+            <div class="pt-2 pb-2">Event Host:
+                <h8><%= dinner.eventHost %></h8>
+            </div>
+        </div>
+        <div class="col-4">
+            <div>Food List:</div>
+            <div class="d-flex justify-content-center">
+                <% if (dinner.foodList) {%>
+                <% dinner.foodList.forEach(function (item) { %>
+                    <p><%= item.foodName %></p>
+                    <p><%= item.foodAllergen %></p>
+            </div>
+            
+                    <form>
+                        <button type="submit" formaction="/dinners/<%= dinner._id %>/foods/<%= item._id %>/edit">Edit Food</button>
+                     </form>
+                     <form action="/dinners/<%= dinner._id %>/foods/<%= item._id %>/?_method=DELETE" method="POST">
+                        <button type="submit" >Delete</button>
+                     </form>
+                <% }); %>
+            <% } else { %>
+                    <p>No food listed.</p>
+            <% }; %>
+        <div id="bring-dish-link"><a href="/dinners/<%= dinner._id %>/foods/new">Bring a dish!</a></div>
+        </div>
 
             <!---Added food shown below-->  
 
