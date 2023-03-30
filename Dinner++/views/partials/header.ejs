@@ -16,13 +16,14 @@
 
   <nav>
     <div>
-      <img src="/assets/logos/dinnerplusplus-dark-nobg.svg">
+      <!-- <img src="/assets/logos/dinnerplusplus-dark-nobg.svg"> -->
     </div>
-    <a href="/">Dinner ++</a> |
-    <a href="/dinners/new">Add a dinner</a> | 
-    <a href="/dinners/">View Dinners</a>  |
-
+    <a href="/assets/logos/dinnerplusplus-dark-nobg.svg"><img src="/">
+    add image here</a> |
+    
     <% if (user) { %>
+      <a href="/dinners/new">Add a dinner</a> | 
+      <a href="/dinners/">View Dinners</a>  |
     <a href="/logout">LOG OUT</a>
     <% } else { %>
     <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>

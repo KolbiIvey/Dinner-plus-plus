@@ -59,7 +59,17 @@ async function create(req, res) {
 }
 
 async function show(req, res) {
-    const dinner = await Dinner.findById(req.params.id).populate('foodList');
+    // new code
+    const query = [{
+        path: 'foodList'
+    },{
+        path: 'attendeeList',
+    }]
+
+    //
+
+    const dinner = await Dinner.findById(req.params.id).populate(query);
+    console.log(dinner)
     res.render('dinners/show', { 
         title: dinner.eventName,
         dinner: dinner })
