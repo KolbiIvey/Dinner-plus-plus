@@ -9,23 +9,21 @@ const dinnerSchema = new Schema({
         required: true
     },
 
-    eventDate: {
+    eventStartDate: {
         type: Date,
         required: true
     },
-    // eventTimeStart: {
-    //     type: Date,
-    //     required: true
-    // },
-
-    // eventTimeEnd: {
-    //     type: Date,
-    //     required: true
-    // },
-
+    eventEndDate: {
+        type: Date,
+        required: true
+    },
     eventHost: {
         type: String,
         required: true
+      },
+    eventLocation: {
+        type: String,
+        required: false
     },
     attendeeList: [{
         type: Schema.Types.ObjectId,

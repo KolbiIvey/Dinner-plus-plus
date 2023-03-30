@@ -24,9 +24,21 @@ function newDinnerdate(req, res) {
 
 async function create(req, res) {
     try {
+        const startDate = req.body.eventStartDate
+        const startTime = req.body.eventStartTime;
+        const endDate = req.body.eventEndDate
+        const endTime = req.body.eventEndTime;
+
+        const start = `${startDate}T${startTime}`
+        const end = `${endDate}T${endTime}`
+
+        req.body['eventStartDate'] = start
+        req.body['eventEndDate'] = end
+        req.body['eventHost'] = req.user.name
+        console.log(req.body)
         const dinner = new Dinner(req.body);
         await dinner.save();
-        console.log(dinner);
+        console.log(dinner)
 
         // // openai
     
@@ -67,8 +79,9 @@ async function show(req, res) {
     }]
 
     //
-
     const dinner = await Dinner.findById(req.params.id).populate(query);
+    
+    
     console.log(dinner)
     res.render('dinners/show', { 
         title: dinner.eventName,
