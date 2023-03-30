@@ -32,13 +32,18 @@ const dinnerSchema = new Schema({
     eventAttendeeNum: {
         type: Number
     },
-    foodList: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Food'
-    }]}, {
+    foodList: {
+        type: Array,
+        //add embedded data here [embedded]
+    }}, {
         timestamps: true
 });
 
+
+// [{
+//     type: Schema.Types.ObjectId,
+//     ref: 'Food'
+//   }],
 
 
 
