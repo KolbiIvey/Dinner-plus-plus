@@ -33,7 +33,6 @@ async function index(req, res) {
         await dinners.forEach(dinner => { 
             const startDate = dateConverter(dinner.eventStartDate);
             const endDate = dateConverter(dinner.eventEndDate);
-            console.log(startDate)
             Object.assign(dinner, {'start':startDate,'end' :endDate})
             console.log(dinner)
         })
@@ -62,32 +61,35 @@ async function create(req, res) {
         const start = `${startDate}T${startTime}`
         const end = `${endDate}T${endTime}`
 
+        // // openai //////////////
+    
+        const evtName = req.body.eventName
+        const evtHost = req.body.eventHost
+        const prompt = `Write an invitation for ${evtName} hosted by ${evtHost} in less than 200 characters.`
+        const params = {
+            model: "text-davinci-003",
+            prompt: prompt,
+            max_tokens: 100,
+            temperature: 0.5,
+            n: 1,
+        };
+
+        console.log(params)
+        const response = await openai.createCompletion(params);
+        console.log(response)
+        const gptResponse = await response.data.choices[0]["text"]
+        console.log(gptResponse )
+        console.log(typeof gptResponse )
+
+        // // openai //////////////
+
         req.body['eventStartDate'] = start
         req.body['eventEndDate'] = end
         req.body['eventHost'] = req.user.name
-        console.log(req.body)
-        const dinner = new Dinner(req.body);
+        req.body['eventDesc'] = gptResponse
+
+        const dinner = await new Dinner(req.body);
         await dinner.save();
-        console.log(dinner)
-
-        // // openai
-    
-        // const evtName = req.body.eventName
-        // const evtHost = req.body.eventHost
-        // const prompt = `Write an invitation for ${evtName} hosted by ${evtHost} in less than 200 characters.`
-        // console.log(prompt)
-        // const params = {
-        //     model: "text-davinci-003",
-        //     prompt: prompt,
-        //     temperature: 0.5,
-        //     n: 1,
-        // };
-
-        // console.log(params)
-        // const response = await openai.createCompletion(params);
-        // console.log(response)
-        // console.log(response.data.choices[0].text)
-        // //return response.choices[0].text.trim();
 
         res.redirect('/dinners') //temp code, after show.ejs is coded out
         //redirect to '/dinners/${dinner._id}

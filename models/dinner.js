@@ -8,7 +8,6 @@ const dinnerSchema = new Schema({
         type: String,
         required: true
     },
-
     eventStartDate: {
         type: Date,
         required: true
@@ -22,6 +21,10 @@ const dinnerSchema = new Schema({
         required: true
       },
     eventLocation: {
+        type: String,
+        required: false
+    },
+    eventDesc: {
         type: String,
         required: false
     },
