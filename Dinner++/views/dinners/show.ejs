@@ -1,0 +1,77 @@
+<%- include('../partials/header') %>
+
+<div class="dinner-details"> 
+        <div>
+            <div>Event Name:</div>
+            <h2><%= dinner.eventName %></h2>
+        </div>
+        <div>
+            <div>Event Start Date:</div>
+            <h4><%= dinner.eventStartDate%></h4>
+
+        </div>
+        <div>
+            <div>Event End Date:</div>
+            <h4><%= dinner.eventEndDate %></h4>
+        </div>
+        <div>
+            <div>Event Location:</div>
+            <h4><%= dinner.eventLocation %></h4>
+        </div>
+        <div>
+            <div>Event Host:</div>
+            <h4><%= dinner.eventHost %></h4>
+        </div>
+        <div>
+            <div>Food List:</div>
+            <% if (dinner.foodList) {%>
+                <% dinner.foodList.forEach(function (item) { %>
+                    <p><%= item.foodName %></p>
+                    <p><%= item.foodAllergen %></p>
+
+                   
+                    
+                    <form>
+                        <button type="submit" formaction="/dinners/<%= dinner._id %>/foods/<%= item._id %>/edit">Edit Food</button>
+                     </form>
+                     <form action="/dinners/<%= dinner._id %>/foods/<%= item._id %>/?_method=DELETE" method="POST">
+                        <button type="submit" >Delete</button>
+                     </form>
+                    
+
+
+                <% }); %>
+            <% } else { %>
+                <p>No food listed.</p>
+            <% }; %>
+        </div>
+        <div><a href="/dinners/<%= dinner._id %>/foods/new">Bring a dish!</a> 
+
+
+            </div>
+        <!-- squid with single line to call upon the data -->
+        <div title="Add to Calendar" class="addeventatc">
+            Add to Calendar
+            <span class="start"><%= start %></span>
+            <span class="end"><%= end %></span>
+            <!-- <span class="timezone">America/Los_Angeles</span> -->
+            <span class="title"><%= dinner.eventName %></span>
+            <span class="description">Describe Party Here</span>
+            <span class="location"><%= dinner.eventLocation %></span>
+        </div>
+
+
+</div>
+
+            <!---Added food shown below-->  
+
+<div>
+    <h2>Who is coming?</h2>
+    <% dinner.attendeeList.forEach((attendee) => { %>
+        <div><p><%= attendee.name %></p></div>
+    <% }) %>
+</div>
+
+
+
+<%- include('../partials/footer') %>
