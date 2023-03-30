@@ -80,17 +80,48 @@ async function show(req, res) {
 
     //
     const dinner = await Dinner.findById(req.params.id).populate(query);
-    
-    
-    console.log(dinner)
+    // const regx = //gi
+
+    //  let stringDate =  dinner.eventStartDate.toString()
+    //  let found = stringDate.match(regx)
+    // console.log(found)
+    const startDate = dateConverter(dinner.eventStartDate);
+    const endDate = dateConverter(dinner.eventEndDate);
+    dinner['startDateStrFormat'] = startDate;
+    dinner['endDateStrFormat'] = endDate;
+    console.log(startDate)
+    console.log(endDate)
+    console.log(dinner);
     res.render('dinners/show', { 
         title: dinner.eventName,
-        dinner: dinner })
+        dinner: dinner})
 }
+
+function dateConverter(dateObj) {
+    const startDate = dateObj
+    let day = startDate.getDate();
+    let month = startDate.getMonth() + 1;
+    let year = startDate.getFullYear()
+    let hour = startDate.getHours();
+    let minute = startDate.getMinutes();
+    console.log(`
+    day: ${day}
+    month: ${month + 1}
+    year: ${year}
+    hour: ${hour}
+    minute: ${minute}
+    ${month}/${day}/${year} ${hour}:${minute}
+    `)
+    let format1 = ` ${month}/${day}/${year} ${hour}:${minute}`
+    return format1;
+}
+
+
 
 module.exports = {
     index,
     new: newDinnerdate,
     create,
     show,
+    dateConverter
 }
