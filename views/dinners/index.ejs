@@ -2,14 +2,13 @@
 
     <% data.dinnerData.forEach(function(d){ %>
     <div class="card mt-4">
-        <div class="card-header py-0">
+        <div class="card-header py-0" id="card-header">
             <h2><%= d.eventName %></h2>
             <p>Hosted by: <%= d.eventHost %></p>
         </div>
-        <div class="card-body text-body">
-            <p><%= d.eventDate %></p>
-            <p><%= d.eventTimeStart %></p>
-            <p><%= d.eventTimeEnd %></p>
+        <div class="card-body text-body" id="card-body">
+            <p><%= d.eventStartDate %></p>
+            <p><%= d.eventEndDate %></p>
             <p><%= d.eventLocation %></p>
             <a href="/dinners/<%= d._id %>" class="link-dark">See details</a>
         </div>
