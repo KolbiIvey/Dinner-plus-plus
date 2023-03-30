@@ -9,37 +9,42 @@ const dinnerSchema = new Schema({
         required: true
     },
 
-    eventDate: {
+    eventStartDate: {
         type: Date,
         required: true
     },
-    // eventTimeStart: {
-    //     type: Date,
-    //     required: true
-    // },
-
-    // eventTimeEnd: {
-    //     type: Date,
-    //     required: true
-    // },
-
+    eventEndDate: {
+        type: Date,
+        required: true
+    },
     eventHost: {
         type: String,
         required: true
+      },
+    eventLocation: {
+        type: String,
+        required: false
     },
-    attendeeList: {
-        type: Array,
-        // add ref here for Oauth [ref]
-    },
+    attendeeList: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+      }],
     eventAttendeeNum: {
         type: Number
     },
-    foodList: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Food'
-    }]}, {
+    foodList: {
+        type: Array,
+        //add embedded data here [embedded]
+    }}, {
         timestamps: true
 });
+
+
+// [{
+//     type: Schema.Types.ObjectId,
+//     ref: 'Food'
+//   }],
+
 
 
 

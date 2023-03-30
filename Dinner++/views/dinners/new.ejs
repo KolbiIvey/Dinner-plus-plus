@@ -8,18 +8,21 @@
         <form id="create-dinner-form" action="/dinners" method="POST">
             <label>What is the name of the event?</label>
             <input type="text" name="eventName">
-            <label>When is the event held?</label>
-            <input type="date" name="eventDate">
+
             <label>When does the event start?</label>
-            <input type="time" name="eventTimeStart">
+            <input type="date" name="eventStartDate">
+
+            <label>What time does the event start? (HH:MM AM/PM)</label>
+            <input type="time" name="eventStartTime">
+
             <label>When does the event end?</label>
-            <input type="time" name="eventTimeEnd">
-            <label>Who is hosting?</label>
-            <input type="text" name="eventHost" placeholder="First and Last name">
+            <input type="date" name="eventEndDate">
+
+            <label>What time does the event end? (HH:MM AM/PM)</label>
+            <input type="time" name="eventEndTime">
+
             <label>Where is the event located?</label>
             <input type="text" name="eventLocation" placeholder="City, State">
-            <label>Food to bring</label>
-            <input type="text" name="$$$$$">
             <button type='submit'>Create</button>
         </form>
     </div>

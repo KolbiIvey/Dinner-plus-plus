@@ -24,9 +24,21 @@ function newDinnerdate(req, res) {
 
 async function create(req, res) {
     try {
+        const startDate = req.body.eventStartDate
+        const startTime = req.body.eventStartTime;
+        const endDate = req.body.eventEndDate
+        const endTime = req.body.eventEndTime;
+
+        const start = `${startDate}T${startTime}`
+        const end = `${endDate}T${endTime}`
+
+        req.body['eventStartDate'] = start
+        req.body['eventEndDate'] = end
+        req.body['eventHost'] = req.user.name
+        console.log(req.body)
         const dinner = new Dinner(req.body);
         await dinner.save();
-        console.log(dinner);
+        console.log(dinner)
 
         // // openai
     
@@ -59,15 +71,48 @@ async function create(req, res) {
 }
 
 async function show(req, res) {
-    const dinner = await Dinner.findById(req.params.id).populate('foodList');
+    const query = [{
+        path: 'foodList'
+    },{
+        path: 'attendeeList',
+    }]
+    const dinner = await Dinner.findById(req.params.id).populate(query);
+    const startDate = dateConverter(dinner.eventStartDate);
+    const endDate = dateConverter(dinner.eventEndDate);
+    dinner['startDateStrFormat'] = startDate;
+    dinner['endDateStrFormat'] = endDate;
     res.render('dinners/show', { 
         title: dinner.eventName,
-        dinner: dinner })
+        dinner: dinner,
+        start: startDate,
+        end: endDate})
 }
+
+function dateConverter(dateObj) {
+    const startDate = dateObj
+    let day = startDate.getDate();
+    let month = startDate.getMonth() + 1;
+    let year = startDate.getFullYear()
+    let hour = startDate.getHours();
+    let minute = startDate.getMinutes();
+    let newArray = [day, month, hour, minute]
+    newArray.forEach((digits, index)=> {
+       let digitString = digits.toString();
+    if (digitString.length === 1) {
+       let newNum =  `0${digitString}`
+       newArray.splice(index, 1, newNum)
+    }
+    })
+    let format1 = ` ${newArray[1]}/${newArray[0]}/${year} ${newArray[2]}:${newArray[3]}`
+    return format1;
+}
+
+
 
 module.exports = {
     index,
     new: newDinnerdate,
     create,
     show,
+    dateConverter
 }
