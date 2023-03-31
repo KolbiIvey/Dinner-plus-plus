@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-// Need to fix eventTimeStart and End type to allow MongoDB to accept time
 const dinnerSchema = new Schema({
     eventName: {
         type: String,
@@ -42,14 +41,6 @@ const dinnerSchema = new Schema({
     },{
         timestamps: true
 });
-
-
-// [{
-//     type: Schema.Types.ObjectId,
-//     ref: 'Food'
-//   }],
-
-
 
 
 module.exports = mongoose.model('Dinner', dinnerSchema)

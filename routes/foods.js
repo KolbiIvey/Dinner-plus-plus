@@ -20,6 +20,4 @@ router.put('/dinners/:id/foods/:idFood', foodsCtrl.updateFood)
 //Delete / foods/:id
 router.delete('/dinners/:id/foods/:idFood', ensureLoggedIn, foodsCtrl.deleteFood)
 
-
-
 module.exports = router;

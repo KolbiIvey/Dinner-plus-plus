@@ -12,10 +12,7 @@ router.get('/', ensureLoggedIn, dinnersCtrl.index);
 router.get('/new',ensureLoggedIn, dinnersCtrl.new);
 //POST /dinners
 router.post('/', ensureLoggedIn, dinnersCtrl.create);
-// Path to individual dinner details
 //GET /dinners/:id
 router.get('/:id', ensureLoggedIn, dinnersCtrl.show);
-
-
 
 module.exports = router;

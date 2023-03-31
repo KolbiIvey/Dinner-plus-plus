@@ -4,13 +4,6 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-
-// 03-25 -> 
-// make sure to install: 
-// % npm i express-session
-// % npm i passport
-// % npm i passport-google-oauth
-
 var session = require('express-session')
 var passport = require('passport');
 var methodOverride = require('method-override');
