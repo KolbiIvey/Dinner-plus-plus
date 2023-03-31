@@ -22,6 +22,10 @@ const foodSchema = new Schema ({
     recipe: {
         type: String,
         required: false
+    },
+    creator: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     }
 })
 

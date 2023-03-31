@@ -16,19 +16,17 @@ async function newFood(req, res) {
 async function createFood(req, res){
     try {
         const meal = await Food.create(req.body);
+        console.log('this is req.body', req.body)
+        console.log(meal)
         //findbyid error use diff method?
         const dinner = await Dinner.findById(req.params.id)
         const user = await User.findById(req.user._id)
         const newMeal = await Food.findById(meal._id)
         dinner.foodList.push(newMeal._id)
-
-        // new code
         if (dinner.attendeeList.findIndex((attendee) => attendee.toString() === req.user.id) < 0){
             dinner.attendeeList.push(user._id)
             await user.save()
         }
-        // end new code
-        console.log(dinner.attendeeList)
         user.foodData.push(newMeal._id)
         res.redirect(`${dinner._id}`)
         await dinner.save();
@@ -87,6 +85,8 @@ async function deleteFood(req, res){
     }
 
 }
+
+
 
 // res.redirect(`dinners/${dinner._id}`);
 // `, { title: 'Edit Food', errorMsg: ''}
