@@ -20,10 +20,17 @@
                     <p>Hosted by: <%= d.eventHost %></p>
                 </div>
                 <div class="card-body text-body rounded-2" id="card-body">
-                    <p><h6><span><%= d.eventStartDate.toDateString() %></span></h6> <span><%= d.eventStartDate.toLocaleTimeString() %></span></p>
-                    <p><h6><span><%= d.eventEndDate.toDateString() %></span></h6></span><%= d.eventEndDate.toLocaleTimeString() %></span></p>
-                    <p><%= d.eventLocation %></p>
-                    <a href="/dinners/<%= d._id %>" role="button" class="btn btn-secondary">See details</a>
+                    <div class="row">
+                        <div class="col-8">
+                            <p class="display-6"><%= d.eventDesc %></p>
+                        </div>
+                        <div class="col-4">
+                            <p><h6><span><%= d.eventStartDate.toDateString() %></span></h6> <span><%= d.eventStartDate.toLocaleTimeString() %></span></p>
+                            <p><h6><span><%= d.eventEndDate.toDateString() %></span></h6></span><%= d.eventEndDate.toLocaleTimeString() %></span></p>
+                            <p><%= d.eventLocation %></p>
+                            <a href="/dinners/<%= d._id %>" role="button" class="btn btn-outline-secondary">See details</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
