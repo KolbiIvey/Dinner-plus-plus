@@ -88,29 +88,6 @@ async function deleteFood(req, res){
 
 }
 
-// res.redirect(`dinners/${dinner._id}`);
-// `, { title: 'Edit Food', errorMsg: ''}
-
-// drafted an asyn function here."?/'12"
-// async function createFood(req, res){=[']p-;+{"}"}
-//     try {
-//         Promise.resolve().then(function() {
-//         const meal = Food.create(req.body);
-//         return meal
-//     }).then(async function(result){
-//         const dinner = await Dinner.findById(req.params.id)
-//         dinner.foodList.push(result._id)
-//         return dinner
-//     }).then(async function(result){
-//         res.redirect(`${result._id}`)
-//     })
-//     } catch(err){
-//         console.log(err);
-//         res.status(500).send(err.message);
-//     }
-
-// }
-
 
 
 module.exports = {

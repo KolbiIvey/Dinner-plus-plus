@@ -1,13 +1,14 @@
 <%- include('../partials/header') %>
 
-<container id="dinner-section">
+<div="dinner-section" class="container ">
     <div class="row">
-        <div class="col-12 d-flex justify-content-center">
+        <div class="col-sm-12 d-flex justify-content-center">
         <h1>Create a dinner date!</h1>
     </div>
 
     <div class="row">
-        <div class="col-12 d-flex justify-content-center mt-4">
+        <div class="col-2"> </div>
+        <div class="col-sm-8 d-flex justify-content-center mt-4">
             <form id="create-dinner-form" action="/dinners" method="POST">
                 <label>What is the name of the event?</label>
                 <input type="text" name="eventName">
@@ -26,15 +27,17 @@
 
                 <label>Where is the event located?</label>
                 <input type="text" name="eventLocation" placeholder="City, State">
+        </div>
+        <div class="col-2"> </div>
     </div>
 
-    <div class="row">
+    <div class="row mb-5">
         <div class="col 4 d-flex justify-content-center mt-4">
             <button type='submit'>Create</button>
-                </div>
-            </div>
+        </div>
+    </div>
         </form>
     </div>
-</container>
+</div>
 
 <%- include('../partials/footer') %>
