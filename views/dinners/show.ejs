@@ -31,12 +31,12 @@
         </div>
 
         <div class="row">
-            <div class="col-8 border border-dark rounded">
+            <div class="col-8 ">
                 <div class="pt-2 pb-2">Event Start Date:
-                    <h8><%= dinner.eventStartDate%></h8>
+                    <p><h5><span><%= dinner.eventStartDate.toDateString() %></span></h5> <h6><span><%= dinner.eventStartDate.toLocaleTimeString() %></span></h6></p>
                 </div>
                 <div class="py-2">Event End Date:
-                    <h8><%= dinner.eventEndDate %></h8>
+                    <p><h5><span><%= dinner.eventEndDate.toDateString() %></span></h5> <h6></span><%= dinner.eventEndDate.toLocaleTimeString() %></span></h6></p>
                 </div>
                 <div class="py-2">Event Location:
                     <h8><%= dinner.eventLocation %></h8>
@@ -46,28 +46,44 @@
                 </div>
             </div>
 
-            <div class="col-4 border border-dark rounded">
+            <div class="col-4 ">
                 <div class="d-flex justify-content-left">
                     <h6><a id="bring-dish-link" href="/dinners/<%= dinner._id %>/foods/new">Bring a dish!</a></h6>
                 </div>
-                <div class="d-flex justify-content-left mt-3"><h8>Food List:</h8></div>
+
+                <div class="d-flex justify-content-left mt-3">
+                    <h8>Food List:</h8>
+                </div>
                 <div class="d-flex justify-content-left">
-                    <% if (dinner.foodList) {%>
-                    <% dinner.foodList.forEach(function (item) { %>
-                        <p><%= item.foodName %></p>
-                        <p class="mx-2">Allergen: <%= item.foodAllergen %></p>
-                        <% if (user?._id.equals(item.creator)) { %>
-                        <form>
-                            <button class="mx-2" type="submit" formaction="/dinners/<%= dinner._id %>/foods/<%= item._id %>/edit">Edit</button>
-                        </form>
-                        <form action="/dinners/<%= dinner._id %>/foods/<%= item._id %>/?_method=DELETE" method="POST">
-                            <button type="submit" >Delete</button>
-                        </form>
-                        <% } %>
-                    <% }); %>
-                <% } else { %>
-                        <p>No food listed.</p>
-                <% }; %>
+                    <table>
+                        <% if (dinner.foodList) {%>
+                            <% dinner.foodList.forEach(function (item) { %>
+                                <tr>
+                                    <td>
+                                        <p><%= item.foodName %></p>
+                                    </td>
+                                        <td>
+                                            <p class="mx-2">Allergen: <%= item.foodAllergen %></p>
+                                        </td>
+                                    <% if (user?._id.equals(item.creator)) { %>
+                                    <td>
+                                        <form>
+                                            <button class="mx-2" type="submit" formaction="/dinners/<%= dinner._id %>/foods/<%= item._id %>/edit">Edit</button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form action="/dinners/<%= dinner._id %>/foods/<%= item._id %>/?_method=DELETE" method="POST">
+                                            <button type="submit" >Delete</button>
+                                        </form>
+                                    </td>
+                                    <% } %>
+                                </tr>
+                            <% }); %>
+                        <% } else { %>
+                                <p>No food listed.</p>
+                        <% }; %>
+                    </table>
+                
                 </div>
             </div>
             <div class="row col-8">
