@@ -14,6 +14,10 @@ body > nav {
   padding: 0 20px 0 30px;
 }
 
+h6{
+  font-weight: bold;
+}
+
 h8 {
   font-weight: bold;
 }
@@ -59,6 +63,10 @@ h8 {
 }
 #card-body{
   background-color: #F7F7F7!important;
+}
+
+#bring-dish-link {
+  color: #000000!important;
 }
 
 a {
