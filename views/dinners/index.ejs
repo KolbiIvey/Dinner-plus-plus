@@ -1,20 +1,39 @@
 <%- include('../partials/header') %>
 
-    <% data.dinnerData.forEach(function(d){ %>
-    <div class="card mt-4 mb-5">
-        <div class="card-header py-0" id="card-header">
-            <h2><%= d.eventName %></h2>
-            <p>Hosted by: <%= d.eventHost %></p>
-        </div>
-        <div class="card-body text-body" id="card-body">
-            <p><%= d.eventStartDate %></p>
-            <p><%= d.eventEndDate %></p>
-            <p><%= d.eventLocation %></p>
-            <a href="/dinners/<%= d._id %>" class="link-dark">See details</a>
+<div class="container">    
+    <div class="row">
+        <div>
+        <h1>Upcoming Events</h1>
         </div>
     </div>
-</div>
+    <% let now = new Date() %>
+    <% data.dinnerData.forEach(function(d){ %>
+        <% if (d.eventEndDate > now) { %>
+
+    <div class="row">
+        <div class="col-md-1"></div>
+
+        <div class="col-md-10">
+            <div class="card mt-4 mb-5">
+                <div class="card-header py-4 pb-2" id="card-header">
+                    <h2><%= d.eventName %></h2>
+                    <p>Hosted by: <%= d.eventHost %></p>
+                </div>
+                <div class="card-body text-body" id="card-body">
+                    <p><span><%= d.eventStartDate.toDateString() %></span> <span><%= d.eventStartDate.toLocaleTimeString() %></span></p>
+                    <p><span><%= d.eventEndDate.toDateString() %></span></span><%= d.eventEndDate.toLocaleTimeString() %></span></p>
+                    <p><%= d.eventLocation %></p>
+                    <a href="/dinners/<%= d._id %>" class="link-dark">See details</a>
+                </div>
+            </div>
+        </div>
+
+        <% } %>
+        <div class="col-md-1"></div>
+    </div>
+
     <% }) %>
+</div>
 
 
 
