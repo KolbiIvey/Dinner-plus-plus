@@ -25,7 +25,6 @@ function dateConverter(dateObj) {
     return format1;
 }
 
-
 async function index(req, res) {   
     try {
         const dinners = await Dinner.find({});
@@ -34,6 +33,9 @@ async function index(req, res) {
             const endDate = dateConverter(dinner.eventEndDate);
             Object.assign(dinner, {'start':startDate,'end' :endDate})
         })
+        dinners.sort((dinnerA, dinnerB) => {
+            return dinnerA.eventEndDate - dinnerB.eventEndDate})
+
         res.render('dinners/index', { data:{
             title: 'Dinner Dates',
             dinnerData: dinners,
@@ -60,7 +62,7 @@ async function create(req, res) {
         // // openai //////////////
         const evtName = req.body.eventName
         const evtHost = req.user.name
-        const prompt = `Write an invitation for ${evtName} hosted by ${evtHost} in less than 200 characters.`
+        const prompt = `Write a poem about ${evtName} in less than 180 characters.`
         const params = {
             model: "text-davinci-003",
             prompt: prompt,
@@ -106,9 +108,6 @@ async function show(req, res) {
         res.redirect('/dinners/new');
     }
 }
-
-
-
 
 module.exports = {
     index,

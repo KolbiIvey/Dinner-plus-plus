@@ -1,9 +1,6 @@
 const Food = require('../models/food');
 const Dinner = require('../models/dinner');
 const User = require('../models/user');
-// const user = require('../models/user');
-
-
 
 async function newFood(req, res) {
     const dinner = await Dinner.findById(req.params.id)
@@ -91,10 +88,7 @@ async function deleteFood(req, res){
         console.log(err);
         res.status(500).send(err.message);
     }
-
 }
-
-
 
 module.exports = {
     new: newFood,
