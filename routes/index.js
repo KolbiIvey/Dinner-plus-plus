@@ -14,15 +14,15 @@ router.get('/auth/google', passport.authenticate(
 router.get('/oauth2callback', passport.authenticate(
   'google',
   {
-    successRedirect: '/dinners',
-    failureRedirect: '/dinners'
+    successRedirect: '/',
+    failureRedirect: '/'
   }
 ));
 
 // Google Oauth logout route
 router.get('/logout', function(req, res){
   req.logout(function() {
-    res.redirect('/dinners');
+    res.redirect('/');
   });
 });
 

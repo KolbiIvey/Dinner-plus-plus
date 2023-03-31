@@ -8,7 +8,7 @@ const foodSchema = new Schema ({
     },
     foodAllergen: {
         type: String,
-        enum: ['DF', 'VG', 'VE', 'NF'],
+        enum: ['None', 'DF', 'VG', 'VE', 'NF'],
         required: false
     },
     feeds: {
@@ -22,6 +22,11 @@ const foodSchema = new Schema ({
     recipe: {
         type: String,
         required: false
+    },
+    creator: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
     }
 })
 

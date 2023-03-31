@@ -1,31 +1,53 @@
 <%- include('../partials/header') %>
 
-<container id="dinner-section">
-    <div>
-        <h1>Create a dinner date!</h1>
+<div="dinner-section" class="container ">
+
+
+    <div class="row">
+        <div class="col-2"> </div>
+        <div class="col-sm-8 d-flex justify-content-center mt-4">
+            <div class="card shadow-lg">
+                <row>
+                    <div class=" card-header col-sm-12 d-flex justify-content-center">
+                        <h1>Create a dinner date!</h1>
+                    </div>
+                </row>
+                <row>
+                    <div class="card-body text-body">
+                        <form class="form-control" id="create-dinner-form" action="/dinners" method="POST">
+                            <label class="form-label">What is the name of the event?</label>
+                            <input type="text" name="eventName" class="form-control">
+
+                            <label class="form-label">When does the event start?</label>
+                            <input type="date" name="eventStartDate" class="form-control">
+
+                            <label class="form-label">What time does the event start? (HH:MM AM/PM)</label>
+                            <input type="time" name="eventStartTime" class="form-control">
+
+                            <label class="form-label">When does the event end?</label>
+                            <input type="date" name="eventEndDate" class="form-control">
+
+                            <label class="form-label">What time does the event end? (HH:MM AM/PM)</label>
+                            <input type="time" name="eventEndTime" class="form-control">
+
+                            <label class="form-label">Where is the event located?</label>
+                            <input type="text" name="eventLocation" placeholder="City, State" class="form-control">
+                        
+                    </div>
+                </row>
+                <row>
+                    <div class="row mb-3">
+                        <div class="col 4 d-flex justify-content-center mt-1">
+                            <button type='submit'>Create</button>
+                        </div>
+                    </form>
+                    </div>
+                </row>
+            </div>
+        </div>
+        <div class="col-2"> </div>
     </div>
-    <div>
-        <form id="create-dinner-form" action="/dinners" method="POST">
-            <label>What is the name of the event?</label>
-            <input type="text" name="eventName">
+</div>
 
-            <label>When does the event start?</label>
-            <input type="date" name="eventStartDate">
-
-            <label>What time does the event start? (HH:MM AM/PM)</label>
-            <input type="time" name="eventStartTime">
-
-            <label>When does the event end?</label>
-            <input type="date" name="eventEndDate">
-
-            <label>What time does the event end? (HH:MM AM/PM)</label>
-            <input type="time" name="eventEndTime">
-
-            <label>Where is the event located?</label>
-            <input type="text" name="eventLocation" placeholder="City, State">
-            <button type='submit'>Create</button>
-        </form>
-    </div>
-</container>
 
 <%- include('../partials/footer') %>

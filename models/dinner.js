@@ -8,7 +8,6 @@ const dinnerSchema = new Schema({
         type: String,
         required: true
     },
-
     eventStartDate: {
         type: Date,
         required: true
@@ -25,6 +24,10 @@ const dinnerSchema = new Schema({
         type: String,
         required: false
     },
+    eventDesc: {
+        type: String,
+        required: false
+    },
     attendeeList: [{
         type: Schema.Types.ObjectId,
         ref: 'User'
@@ -32,10 +35,11 @@ const dinnerSchema = new Schema({
     eventAttendeeNum: {
         type: Number
     },
-    foodList: {
-        type: Array,
-        //add embedded data here [embedded]
-    }}, {
+    foodList: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Food'
+      }],
+    },{
         timestamps: true
 });
 

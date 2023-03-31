@@ -1,7 +1,7 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-
+  background: whitesmoke;
+  font-family: 'Vollkorn', serif;
 }
 
 body > nav {
@@ -11,6 +11,22 @@ body > nav {
   justify-content: flex-end;
   align-items: center;
   padding: 0 20px 0 30px;
+}
+
+h6{
+  font-weight: bold;
+}
+
+h8 {
+  font-weight: bold;
+}
+
+#nav-text {
+  color: #FFFFFF;
+}
+
+#nav-link {
+  color: #FFFFFF;
 }
 
 #main-section {
@@ -40,8 +56,20 @@ body > nav {
   margin-left: auto;
 }
 
+.card-header{
+  background-color: #465362 !important;
+  color: whitesmoke;;
+}
+.card-body{
+  background-color: #F7F7F7!important;
+}
+
+#bring-dish-link {
+  color: #000000!important;
+}
+
 a {
-  color: #00B7FF;
+  color: #FFFFFF;
 }
 
 /* google oAuth */
@@ -53,4 +81,8 @@ a {
 }
 .login img {
   height: 30px;
+}
+
+.logout img {
+  height: 30px
 }

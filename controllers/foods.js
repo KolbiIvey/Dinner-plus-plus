@@ -15,24 +15,32 @@ async function newFood(req, res) {
 
 async function createFood(req, res){
     try {
-        const meal = await Food.create(req.body);
+        const foodItem = {
+            foodName: req.body.foodName,
+            foodAllergen: req.body.foodAllergen,
+            feeds: null,
+            review: null,
+            recipe: null,
+            creator: req.user._id,
+        }
+
+        const meal = await Food.create(foodItem);
+        console.log('this is req.body', req.body)
+        console.log(meal)
         //findbyid error use diff method?
         const dinner = await Dinner.findById(req.params.id)
         const user = await User.findById(req.user._id)
         const newMeal = await Food.findById(meal._id)
         dinner.foodList.push(newMeal._id)
-
-        // new code
         if (dinner.attendeeList.findIndex((attendee) => attendee.toString() === req.user.id) < 0){
             dinner.attendeeList.push(user._id)
             await user.save()
         }
-        // end new code
-        console.log(dinner.attendeeList)
         user.foodData.push(newMeal._id)
-        res.redirect(`${dinner._id}`)
         await dinner.save();
         await user.save();
+        await meal.save()
+        res.redirect(`${dinner._id}`)
     } catch(err){
         console.log(err);
         res.status(500).send(err.message);
@@ -69,8 +77,6 @@ async function updateFood(req, res) {
     }
 }
 
-
-
 async function deleteFood(req, res){
     try{
         const user = await User.findById(req.user.id)
@@ -87,29 +93,6 @@ async function deleteFood(req, res){
     }
 
 }
-
-// res.redirect(`dinners/${dinner._id}`);
-// `, { title: 'Edit Food', errorMsg: ''}
-
-// drafted an asyn function here."?/'12"
-// async function createFood(req, res){=[']p-;+{"}"}
-//     try {
-//         Promise.resolve().then(function() {
-//         const meal = Food.create(req.body);
-//         return meal
-//     }).then(async function(result){
-//         const dinner = await Dinner.findById(req.params.id)
-//         dinner.foodList.push(result._id)
-//         return dinner
-//     }).then(async function(result){
-//         res.redirect(`${result._id}`)
-//     })
-//     } catch(err){
-//         console.log(err);
-//         res.status(500).send(err.message);
-//     }
-
-// }
 
 
 
