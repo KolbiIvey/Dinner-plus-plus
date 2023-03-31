@@ -6,10 +6,12 @@
 
 #                                   Description
 Planning a date night for you and your loved one? How about a birthday party for your good friend Kenjamin? Or maybe you just want to schedule a Taco Tuesday for your office party after work?
+
 Welcome to Dinner++, a fun and simple way to schedule all of your dinner-date related events!
-Creating an event, whether it be a dinner date, a birthday, or get together, is as easy as playing a simple slot machine for a certain loan shark. When you create an event, you can specify the name of the event, the date and time, and the location! After adding the event, you can specify what foods you are bringing. When your friends take a look at your event they can add food to bring, and also
-add the event to their calendar! We hope you enjoy your experience in using our app and can make
-many memories through your dinner dates and the people you share them with!
+
+Creating an event, whether it be a dinner date, a birthday, or get together, is as easy as playing a simple slot machine for a certain loan shark. When you create an event, you can specify the name of the event, the date and time, and the location! 
+
+After adding the event, you can specify what foods you are bringing. When your friends take a look at your event they can add food to bring, and also add the event to their calendar! We hope you enjoy your experience in using our app and can make many memories through your dinner dates and the people you share them with!
     
 
 #                                       Screenshots 
@@ -44,7 +46,7 @@ many memories through your dinner dates and the people you share them with!
 
 
 #                                       Getting Started
-To get started using Dinner++, please use this link here "" and start planning Uncle Kenjamins birthday now!
+To get started using Dinner++, please [use this link here](https://dinnerplusplus.herokuapp.com) and start planning Uncle Kenjamins birthday now!
 
 
 #                                           Next Steps
