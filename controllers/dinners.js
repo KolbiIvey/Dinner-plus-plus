@@ -34,6 +34,9 @@ async function index(req, res) {
             const endDate = dateConverter(dinner.eventEndDate);
             Object.assign(dinner, {'start':startDate,'end' :endDate})
         })
+        dinners.sort((dinnerA, dinnerB) => {
+            return dinnerA.eventEndDate - dinnerB.eventEndDate})
+
         res.render('dinners/index', { data:{
             title: 'Dinner Dates',
             dinnerData: dinners,
