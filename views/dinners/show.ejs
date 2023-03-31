@@ -1,17 +1,17 @@
 <%- include('../partials/header') %>
 
 
-<div class="dinner-details container mt-4"> 
+<div class="dinner-details container mt-3"> 
         <div class="row">
-         <div class="col-12 d-flex justify-content-center">
-            <h1><%= dinner.eventName %></h1>
-        </div>
+            <div class="col-12 d-flex justify-content-center pt-3">
+                <h1><%= dinner.eventName %></h1>
+            </div>
         </div>
 
         <div class="row">
             <div class="col-5"></div>
         <!-- squid with single line to call upon the data -->
-        <div title="Add to Calendar" class="addeventatc col-2 mt-2 border border-dark rounded">
+            <div title="Add to Calendar" class="addeventatc col-2 mt-2 border border-dark rounded">
             Add to Calendar
             <span class="start"><%= start %></span>
             <span class="end"><%= end %></span>
@@ -20,14 +20,14 @@
             <span class="description">Describe Party Here</span>
             <span class="location"><%= dinner.eventLocation %></span>
             </div>
-        </div>
-        <div class="col-5">
-        </div>
 
-        <div class="row mt-4">
-        <div class="col-12 d-flex justify-content-center" id="openai">
-            <p>open ai integration below:</p>
         </div>
+        <div class="col-5"></div>
+
+        <div class="row mt-4 text-center">
+            <div class="col-12 d-flex justify-content-center " id="openai">
+                <p class="display-6 my-2"><%= dinner.eventDesc %></p>
+            </div>
         </div>
 
         <div class="row">
@@ -67,13 +67,18 @@
                         <p>No food listed.</p>
                 <% }; %>
                 </div>
+            </div>
+            <div class="row col-8">
+                <% if (dinner.attendeeList.length) {%>
+                <h7 class="mt-4">Attendees:</h7>
+                <% dinner.attendeeList.forEach((attendee) => { %>
+                    <div><h6><%= attendee.name %></h6></div>
+                <% }) %>
+                <% }%>
+
+            </div>
         </div>
-        <div class="row col-8">
-            <h7 class="mt-4">Who is coming?</h7>
-            <% dinner.attendeeList.forEach((attendee) => { %>
-                <div><h6><%= attendee.name %></h6></div>
-            <% }) %>
-        </div>
+</div>
 
             <!---Added food shown below-->  
 

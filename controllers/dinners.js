@@ -26,7 +26,6 @@ function dateConverter(dateObj) {
 }
 
 
-
 async function index(req, res) {   
     try {
         const dinners = await Dinner.find({});
@@ -57,12 +56,9 @@ async function create(req, res) {
         const startTime = req.body.eventStartTime;
         const endDate = req.body.eventEndDate
         const endTime = req.body.eventEndTime;
-
         const start = `${startDate}T${startTime}`
         const end = `${endDate}T${endTime}`
-
         // // openai //////////////
-    
         const evtName = req.body.eventName
         const evtHost = req.body.eventHost
         const prompt = `Write an invitation for ${evtName} hosted by ${evtHost} in less than 200 characters.`
@@ -73,24 +69,17 @@ async function create(req, res) {
             temperature: 0.5,
             n: 1,
         };
-
-        console.log(params)
         const response = await openai.createCompletion(params);
-        console.log(response)
         const gptResponse = await response.data.choices[0]["text"]
         console.log(gptResponse )
         console.log(typeof gptResponse )
-
         // // openai //////////////
-
         req.body['eventStartDate'] = start
         req.body['eventEndDate'] = end
         req.body['eventHost'] = req.user.name
         req.body['eventDesc'] = gptResponse
-
         const dinner = await new Dinner(req.body);
         await dinner.save();
-
         res.redirect('/dinners') //temp code, after show.ejs is coded out
         //redirect to '/dinners/${dinner._id}
     } catch (err) {
@@ -104,13 +93,6 @@ async function create(req, res) {
 
 async function show(req, res) {
     try{
-        const query = [{
-            path: 'foodList'
-        },{
-            path: 'attendeeList',
-        }]
-        // const dinner = await Dinner.findById(req.params.id).populate(query);
-
         const dinner = await Dinner.findById(req.params.id).populate('foodList').populate('attendeeList');
         const startDate = dateConverter(dinner.eventStartDate);
         const endDate = dateConverter(dinner.eventEndDate);
