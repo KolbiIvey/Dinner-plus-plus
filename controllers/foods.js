@@ -77,8 +77,6 @@ async function updateFood(req, res) {
     }
 }
 
-
-
 async function deleteFood(req, res){
     try{
         const user = await User.findById(req.user.id)
