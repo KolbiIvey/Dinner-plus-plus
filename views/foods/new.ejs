@@ -1,20 +1,23 @@
 <%- include('../partials/header') %>
 
+<div class="row">
+    <form class="col-12 d-flex justify-content-center mt-4" id="add-foods-form" action="/dinners/<%= dinner._id %>" method="POST">
+    <div>
+      <label>Food</label>
+      <input type="text" name="foodName">
+      <label>Allergens<label>
+      <select name="foodAllergen">
+    </div>
+        <option value="None"></option>
+        <option value="DF">Dairy Free</option>
+        <option value="VG">Vegetarian</option>
+        <option value="VE">Vegan</option>
+        <option value="NF">Nut Free</option>
+      </select>
+      <input type="submit" value="Add Food">
+    </form>
+  </div>
+</div>
 
-
-
-<form id="add-foods-form" action="/dinners/<%= dinner._id %>" method="POST">
-  <label>Food</label>
-  <input type="text" name="foodName">
-  <label>Allergens<label>
-  <select name="foodAllergen">
-    <option value="None"></option>
-    <option value="DF">Dairy Free</option>
-    <option value="VG">Vegetarian</option>
-    <option value="VE">Vegan</option>
-    <option value="NF">Nut Free</option>
-  </select>
-  <input type="submit" value="Add Food">
-</form>
 
 <%- include('../partials/footer') %>
