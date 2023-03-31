@@ -33,7 +33,6 @@ async function index(req, res) {
             const startDate = dateConverter(dinner.eventStartDate);
             const endDate = dateConverter(dinner.eventEndDate);
             Object.assign(dinner, {'start':startDate,'end' :endDate})
-            console.log(dinner)
         })
         res.render('dinners/index', { data:{
             title: 'Dinner Dates',
@@ -71,8 +70,6 @@ async function create(req, res) {
         };
         const response = await openai.createCompletion(params);
         const gptResponse = await response.data.choices[0]["text"]
-        console.log(gptResponse )
-        console.log(typeof gptResponse )
         // // openai //////////////
         req.body['eventStartDate'] = start
         req.body['eventEndDate'] = end

@@ -13,13 +13,13 @@
     <div class="row">
         <div class="col-md-1"></div>
 
-        <div class="col-md-10">
-            <div class="card mt-4 mb-5">
-                <div class="card-header py-4 pb-2" id="card-header">
+        <div class="col-md-10 ">
+            <div class="card mt-4 mb-5 ">
+                <div class="card-header py-4 pb-2 rounded-2" id="card-header">
                     <h2><%= d.eventName %></h2>
                     <p>Hosted by: <%= d.eventHost %></p>
                 </div>
-                <div class="card-body text-body" id="card-body">
+                <div class="card-body text-body rounded-2" id="card-body">
                     <p><span><%= d.eventStartDate.toDateString() %></span> <span><%= d.eventStartDate.toLocaleTimeString() %></span></p>
                     <p><span><%= d.eventEndDate.toDateString() %></span></span><%= d.eventEndDate.toLocaleTimeString() %></span></p>
                     <p><%= d.eventLocation %></p>
