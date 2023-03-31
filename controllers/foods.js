@@ -15,7 +15,16 @@ async function newFood(req, res) {
 
 async function createFood(req, res){
     try {
-        const meal = await Food.create(req.body);
+        const foodItem = {
+            foodName: req.body.foodName,
+            foodAllergen: req.body.foodAllergen,
+            feeds: null,
+            review: null,
+            recipe: null,
+            creator: req.user._id,
+        }
+
+        const meal = await Food.create(foodItem);
         console.log('this is req.body', req.body)
         console.log(meal)
         //findbyid error use diff method?
@@ -28,9 +37,10 @@ async function createFood(req, res){
             await user.save()
         }
         user.foodData.push(newMeal._id)
-        res.redirect(`${dinner._id}`)
         await dinner.save();
         await user.save();
+        await meal.save()
+        res.redirect(`${dinner._id}`)
     } catch(err){
         console.log(err);
         res.status(500).send(err.message);
