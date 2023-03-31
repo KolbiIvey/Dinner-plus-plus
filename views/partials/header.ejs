@@ -16,24 +16,25 @@
  
 </head>
 <body>
+  <header>
+    <nav class="navbar bg-dark" id="nav-text">
+      <div class="mx-1 my-1">
+        <a href="/"><img class="d-flex justify-content-between" src="/assets/logos/dinnerplusplus-dark-nobg.svg"></a>
+      </div>
+      <!-- add link to image below -->
+      
+      
+      <% if (user) { %>
+        <a href="/dinners/new" id="nav-link">Add a dinner</a> | 
+        <a href="/dinners/" id="nav-link">View Dinners</a>  |
+      <a href="/logout" id="nav-link">LOG OUT</a>
+      <% } else { %>
+      <a href="/auth/google" class="login" id="nav-link">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
+      <% } %>
+      
+    </nav>
+  </header>
 
 
-  <nav class="navbar bg-dark" id="nav-text">
-    <div>
-      <!-- <img src="/assets/logos/dinnerplusplus-dark-nobg.svg"> -->
-    </div>
-    <!-- add link to image below -->
-    <a href=""></a><img class="d-flex justify-content-between" src="/assets/logos/dinnerplusplus-dark-nobg.svg"></a>
-    
-    <% if (user) { %>
-      <a href="/dinners/new" id="nav-link">Add a dinner</a> | 
-      <a href="/dinners/" id="nav-link">View Dinners</a>  |
-    <a href="/logout" id="nav-link">LOG OUT</a>
-    <% } else { %>
-    <a href="/auth/google" class="login" id="nav-link">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
-    <% } %>
-
-    
-  </nav>
 
   
