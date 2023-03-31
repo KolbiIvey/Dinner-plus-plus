@@ -15,6 +15,11 @@ After adding the event, you can specify what foods you are bringing. When your f
     
 
 #                                       Screenshots 
+![home page](/public/images/favicon/home-page.png)
+![home page2](/public/images/favicon/home-page2.png)
+![index](/public/images/favicon/index.png)
+![show page](/public/images/favicon/show-page.png)
+![add food](/public/images/favicon/add-food.png)
 
 
 
