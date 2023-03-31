@@ -8,7 +8,7 @@ const foodSchema = new Schema ({
     },
     foodAllergen: {
         type: String,
-        enum: ['DF', 'VG', 'VE', 'NF'],
+        enum: ['None', 'DF', 'VG', 'VE', 'NF'],
         required: false
     },
     feeds: {

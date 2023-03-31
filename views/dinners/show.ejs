@@ -55,7 +55,7 @@
                     <% if (dinner.foodList) {%>
                     <% dinner.foodList.forEach(function (item) { %>
                         <p><%= item.foodName %></p>
-                        <p class="mx-2"><%= item.foodAllergen %></p>
+                        <p class="mx-2">Allergen: <%= item.foodAllergen %></p>
                         <% if (user?._id.equals(item.creator)) { %>
                         <form>
                             <button class="mx-2" type="submit" formaction="/dinners/<%= dinner._id %>/foods/<%= item._id %>/edit">Edit</button>
