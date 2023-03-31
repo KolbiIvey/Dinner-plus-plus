@@ -60,7 +60,7 @@ async function create(req, res) {
         const end = `${endDate}T${endTime}`
         // // openai //////////////
         const evtName = req.body.eventName
-        const evtHost = req.body.eventHost
+        const evtHost = req.user.name
         const prompt = `Write an invitation for ${evtName} hosted by ${evtHost} in less than 200 characters.`
         const params = {
             model: "text-davinci-003",
