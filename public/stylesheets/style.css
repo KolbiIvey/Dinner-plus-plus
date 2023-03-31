@@ -56,11 +56,11 @@ h8 {
   margin-left: auto;
 }
 
-#card-header{
+.card-header{
   background-color: #465362 !important;
   color: whitesmoke;;
 }
-#card-body{
+.card-body{
   background-color: #F7F7F7!important;
 }
 
